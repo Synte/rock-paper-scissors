@@ -1,3 +1,3 @@
-###The Odin Project
+## The Odin Project
 
-Project: Rock Paper Scissors
+### Project: Rock Paper Scissors
