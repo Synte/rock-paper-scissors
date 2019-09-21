@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+        Use the console to play!
+        <script>
+            function computerPlay() {
+                let choice = Math.floor(Math.random() * Math.floor(3));
+
+                if (choice == 0) { return "rock"; }
+                else if (choice == 1) { return "paper"; }
+                else { return "scissors"; }
+            }
+
+            function playRound(playerSelection, computerSelection) {
+                let usr = playerSelection.toUpperCase();
+                let cpu = computerSelection.toUpperCase();
+                
+                if (usr == cpu) {
+                    return "It's a draw!";
+                }
+
+                switch (true) {
+                    case (usr == "ROCK" && cpu == "SCISSORS"):
+                    case (usr == "SCISSORS" && cpu == "PAPER"):
+                    case (usr == "PAPER" && cpu == "ROCK"):
+                        return `You win! ${usr} beats ${cpu}`
+                        break;
+                    default:
+                        return `You lose! ${cpu} beats ${usr}`;
+                }
+            }
+        </script>
+    </body>
+</html>
