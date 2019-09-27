@@ -1,0 +1,107 @@
+function computerPlay() {
+    let choice = Math.floor(Math.random() * Math.floor(3));
+
+    if (choice == 0) { return "rock"; }
+    else if (choice == 1) { return "paper"; }
+    else { return "scissors"; }
+}
+
+function playRound(playerSelection, computerSelection) {
+    let usr = playerSelection.toUpperCase();
+    let cpu = computerSelection.toUpperCase();
+    
+    if (usr == cpu) {
+        console.log("It's a draw!");
+        return 0;
+    }
+
+    switch (true) {
+        case (usr == "ROCK" && cpu == "SCISSORS"):
+        case (usr == "SCISSORS" && cpu == "PAPER"):
+        case (usr == "PAPER" && cpu == "ROCK"):
+            console.log(`You win! ${usr} beats ${cpu}`);
+            return 1;
+            break;
+        default:
+            console.log(`You lose! ${cpu} beats ${usr}`);
+            return -1;
+    }
+}
+
+function game() {
+    //Loops haven't been convered in TOP yet, so I will refrain from using one here
+    let score = 0;
+
+    console.log("Round 1/5:");
+    let input = getUserInput();
+    if (input == "QUIT") {
+        console.log("Game aborted.");
+        return;
+    } else {
+        score += playRound(input, computerPlay());
+    }
+
+    console.log("Round 2/5:");
+    input = getUserInput();
+    if (input == "QUIT") {
+        console.log("Game aborted.");
+        return;
+    } else {
+        score += playRound(input, computerPlay());
+    }
+
+    console.log("Round 3/5:");
+    input = getUserInput();
+    if (input == "QUIT") {
+        console.log("Game aborted.");
+        return;
+    } else {
+        score += playRound(input, computerPlay());
+    }
+    
+    console.log("Round 4/5:");
+    input = getUserInput();
+    if (input == "QUIT") {
+        console.log("Game aborted.");
+        return;
+    } else {
+        score += playRound(input, computerPlay());
+    }
+    
+    console.log("Round 5/5:");
+    input = getUserInput();
+    if (input == "QUIT") {
+        console.log("Game aborted.");
+        return;
+    } else {
+        score += playRound(input, computerPlay());
+    }
+    
+    console.log("Game complete...");
+    if (score == 0) {
+        console.log("No winner - it's a draw!");
+    } else if (score > 0) {
+        console.log(`You're the winner! You won ${score} rounds!`);
+    } else if (score < 0) {
+        console.log(`You lose! The computer beat you with ${-score} wins.`);
+    }
+    console.log("Thanks for playing!");
+}
+
+function getUserInput() {
+    let input = prompt("Make your choice! Rock, paper, or scissors?");
+    
+    if (input == null) { return "QUIT"; }
+
+    switch (input.toUpperCase()) {
+        case "QUIT":
+        case "ROCK":
+        case "PAPER":
+        case "SCISSORS":
+            return input;
+            break;
+        default:
+            console.warn("Invalid value entered! Type 'rock', 'paper', or 'scissors' to play, or type 'quit' to exit.");
+            return getUserInput();
+    }
+}
