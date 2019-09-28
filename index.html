@@ -2,14 +2,22 @@
 <html>
     <head>
         <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <button type="button" id="rock">Rock</button><br>
-        <button type="button" id="paper">Paper</button><br>
-        <button type="button" id="scissors">Scissors</button>
-        <p id="games">Games played: 0</p>
-        <p id="userScore">Your score: 0</p>
-        <p id = "cpuScore">Computer's score: 0</p>
+        <h1>Rock, Paper, Scissors</h1>
+        <div class="scores">
+            <h2>Scores</h2>
+            <p>Rounds played: <span id="roundsPlayed">0</span></p>
+            <p>Your score: <span id="usrScore">0</span></p>
+            <p>Computer's score: <span id="cpuScore">0</span></p>
+        </div>
+        <ul>
+            <li><button type="button" id="rock">Rock</button></li>
+            <li><button type="button" id="paper">Paper</button></li>
+            <li><button type="button" id="scissors">Scissors</button></li>
+        </ul>
+        <p id="roundMsg"></p>
     </body>
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
 </html>
