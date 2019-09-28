@@ -6,6 +6,19 @@ function computerPlay() {
     else { return "scissors"; }
 }
 
+function announceWinner() {
+    let winner = (currentUsrScore == 5) ? "usr" : "cpu";
+    totalRoundsPlayed = 0;
+    currentUsrScore = 0;
+    currentCpuScore = 0;
+    
+    if (winner == "usr") {
+        roundMsg.innerHTML += "<br>You reached 5 points first, you win!";
+    } else {
+        roundMsg.innerHTML += "<br>The computer reached 5 points first, you lose!";
+    }
+}
+
 function playRound(playerSelection, computerSelection) {
     let usr = playerSelection.toUpperCase();
     let cpu = computerSelection.toUpperCase();
@@ -19,17 +32,20 @@ function playRound(playerSelection, computerSelection) {
         case (usr == "PAPER" && cpu == "ROCK"):
             roundMsg.textContent = `You win! ${usr} beats ${cpu}`;
             currentUsrScore += 1;
-            usrScore.textContent = currentUsrScore;
             break;
         default:
             roundMsg.textContent = `You lose! ${cpu} beats ${usr}`;
             currentCpuScore += 1;
-            cpuScore.textContent = currentCpuScore;
             break;
     }
 
+    usrScore.textContent = currentUsrScore;
+    cpuScore.textContent = currentCpuScore;
+
     totalRoundsPlayed += 1;
     roundsPlayed.textContent = totalRoundsPlayed;
+    
+    if (currentUsrScore == 5 || currentCpuScore == 5) announceWinner();
 }
 
 function buttonClicked(e) {
